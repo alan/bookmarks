@@ -6,3 +6,9 @@
 	= label_tag :tags, "Tags"
 	= text_field_tag :tags
 	= f.submit "Save Bookmark"
+
+- if @recent_bookmarks	
+	#recently-added
+		%ul
+			- for bookmark in @recent_bookmarks
+				%li= link_to bookmark.url, bookmark.url

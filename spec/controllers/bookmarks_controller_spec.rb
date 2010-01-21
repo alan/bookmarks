@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe BookmarksController do
-
-  #Delete this example and add some real ones
-  it "should use BookmarksController" do
-    controller.should be_an_instance_of(BookmarksController)
+  context "create" do
+    it "should create a new bookmark" do
+      request.env["HTTP_REFERER"] = "test.local"
+      post :create, {:bookmark => {:url => "my.url"}}
+      Bookmark.count.should == 1
+    end
   end
-
 end

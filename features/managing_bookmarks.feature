@@ -10,3 +10,4 @@ Scenario: Adding a bookmark
 		| Tags | news 								|
 	And I press "Save bookmark"
 	Then I should see "Bookmark saved"
+	And I should see "http://www.bbc.co.uk"

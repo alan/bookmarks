@@ -7,6 +7,8 @@ gem "mysql"
 only "test" do
   gem "rspec"
   gem "rspec-rails"
+  gem "machinist"
+  gem "faker"
 end
 
 only "cucumber" do
@@ -14,6 +16,8 @@ only "cucumber" do
   gem "cucumber-rails"
   gem "webrat"
   gem "database_cleaner"
+  gem "machinist"
+  gem "faker"
 end
 
 bundle_path "vendor/bundler_gems"
