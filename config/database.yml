@@ -1,0 +1,14 @@
+development: &DEFAULT
+    adapter: mysql
+    encoding: utf8
+    database: bookmarks_development
+    pool: 5
+    username: root
+    password:
+  
+test: &TEST
+  <<: *DEFAULT
+  database: bookmarks_test
+
+cucumber:
+  <<: *TEST

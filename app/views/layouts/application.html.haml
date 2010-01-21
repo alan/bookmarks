@@ -1,0 +1,8 @@
+%head
+	%title "Bookmarks"
+%body
+	#wrapper
+		#flash
+			#notice.message{:style => "#{'display: none' unless flash[:notice]}" }= flash[:notice]
+		#content-wrapper
+			= yield

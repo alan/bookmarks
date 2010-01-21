@@ -1,0 +1,7 @@
+bin/*
+!vendor/bundler_gems/ruby/1.8/cache/*
+vendor/bundler_gems/*
+
+log/*.log
+.DS_Store
+rerun.txt
