@@ -3,7 +3,7 @@
 - form_for @bookmark do |f|
 	= f.label :url, "URL"
 	= f.text_field :url
-	= label_tag :tag_list, "Tags"
+	= f.label :tag_list, "Tags"
 	= f.text_field :tag_list
 	= f.submit "Save Bookmark"
 
