@@ -1,0 +1,13 @@
+%h1= @bookmark.url
+
+#info
+	%ul
+		%li
+			Added #{time_ago_in_words(@bookmark.created_at)} ago
+		%li Site
+		%li Page title
+		%li Other
+
+%p#tags
+	#{@bookmark.tag_list}
+		

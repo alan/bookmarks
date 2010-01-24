@@ -6,4 +6,8 @@ class BookmarksController < ApplicationController
     end
     redirect_to :back
   end
+  
+  def show
+    @bookmark = Bookmark.find(params[:id])
+  end
 end

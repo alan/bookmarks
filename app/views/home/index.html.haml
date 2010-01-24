@@ -3,12 +3,12 @@
 - form_for @bookmark do |f|
 	= f.label :url, "URL"
 	= f.text_field :url
-	= label_tag :tags, "Tags"
-	= text_field_tag :tags
+	= label_tag :tag_list, "Tags"
+	= f.text_field :tag_list
 	= f.submit "Save Bookmark"
 
 - if @recent_bookmarks	
 	#recently-added
 		%ul
 			- for bookmark in @recent_bookmarks
-				%li= link_to bookmark.url, bookmark.url
+				%li= link_to bookmark.url, bookmark_path(bookmark)
