@@ -1,4 +1,6 @@
 class Bookmark < ActiveRecord::Base
+  include Searchable
+  
   belongs_to :site
   
   validates_presence_of :url
@@ -20,10 +22,10 @@ class Bookmark < ActiveRecord::Base
     self.site = Site.find_or_create_by_name(host)
   end
   
-  def self.search(query)
-    like = "%#{query}%"
-    all(:conditions => ["url LIKE ? OR tags LIKE ?", like, like])
-  end
+  # def self.search(query)
+  #   like = "%#{query}%"
+  #   all(:conditions => ["url LIKE ? OR tags LIKE ?", like, like])
+  # end
   
   private
   
