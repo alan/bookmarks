@@ -9,8 +9,8 @@
 - form_for @bookmark do |f|
 	= f.label :url, "URL"
 	= f.text_field :url
-	= f.label :tag_list, "Tags"
-	= f.text_field :tag_list
+	= f.label :tags
+	= f.text_field :tags
 	= f.submit "Save Bookmark"
 
 - if @recent_bookmarks	

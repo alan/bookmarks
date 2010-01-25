@@ -5,10 +5,10 @@ Feature: Search bookmarks
 
 Background:
 	Given the following bookmarks:
-		| url                      |
-		| http://www.bbc.co.uk     |
-		| http://www.itv.co.uk     |
-		| http://www.ruby-lang.org |
+		| url                      | tags        |
+		| http://www.bbc.co.uk     | tv, news    |
+		| http://www.itv.co.uk     | tv, news    |
+		| http://www.ruby-lang.org | programming |
 
 Scenario: Searching a bookmark by the url
 	Given I am on the home page

@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(:version => 20100124224000) do
   create_table "bookmarks", :force => true do |t|
     t.text     "url",        :null => false
     t.string   "short_url"
+    t.text     "tags"
     t.integer  "site_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -24,21 +25,5 @@ ActiveRecord::Schema.define(:version => 20100124224000) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "taggings", :force => true do |t|
-    t.integer "tag_id"
-    t.string  "taggable_type", :default => ""
-    t.integer "taggable_id"
-  end
-
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
-
-  create_table "tags", :force => true do |t|
-    t.string "name", :default => ""
-    t.string "kind", :default => ""
-  end
-
-  add_index "tags", ["name", "kind"], :name => "index_tags_on_name_and_kind"
 
 end

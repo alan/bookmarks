@@ -1,8 +1,6 @@
 class Bookmark < ActiveRecord::Base
   belongs_to :site
   
-  is_taggable :tags
-  
   validates_presence_of :url
   
   def validate_on_create
