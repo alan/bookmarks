@@ -1,6 +1,10 @@
+class NoSearchableAttributes < StandardError; end;
 module Searchable
   
   def self.included(base)
+    raise NoSearchableAttributes unless base.column_names.any? do |column|
+      !column.ends_with?('_id') && !%w(id created_at updated_at).include?(column)
+    end
     base.extend(ClassMethods)
   end
   
@@ -12,12 +16,8 @@ module Searchable
         !column.ends_with?('_id') && !%w(id created_at updated_at).include?(column)
       end
       
-      conditions = if searchable_columns.size == 0
-                     raise ArgumentError, "There are no searchable fields in this model"
-                   else
-                     first_part = searchable_columns.collect{|column| "#{column} LIKE ?"}.join(" OR ")
-                     searchable_columns.inject([first_part]){|result,e| result << like}
-                   end
+      first_part = searchable_columns.collect{|column| "#{column} LIKE ?"}.join(" OR ")
+      conditions = searchable_columns.inject([first_part]){|result,e| result << like}
       
       all(:conditions => conditions)
     end
