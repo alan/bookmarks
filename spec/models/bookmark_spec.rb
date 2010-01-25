@@ -54,6 +54,11 @@ describe Bookmark do
   end
   
   describe "#search" do
+    it "should return an empty array if nothing found" do
+      results = Bookmark.search("bbc")
+      results.should be_empty
+    end
+    
     it "should search by url" do
       bookmark = Bookmark.make(:url => "http://www.bbc.co.uk")
       results = Bookmark.search("bbc")
@@ -64,6 +69,20 @@ describe Bookmark do
       results = Bookmark.search("bbc")
       results.size.should be(2)
       results.should include(bookmark)
+      results.should include(bookmark2)
+    end
+    
+    it "should search by tags" do
+      bookmark = Bookmark.make(:url => "http://www.bbc.co.uk", :tags => "news, tv")
+      bookmark2 = Bookmark.make(:url => "http://www.bbc.co.uk/iplayer", :tags => "tv, on-demand")
+      
+      results = Bookmark.search("tv")
+      results.size.should be(2)
+      results.should include(bookmark)
+      results.should include(bookmark2)
+      
+      results = Bookmark.search("on-demand")
+      results.size.should be(1)
       results.should include(bookmark2)
     end
   end

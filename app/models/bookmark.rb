@@ -21,7 +21,8 @@ class Bookmark < ActiveRecord::Base
   end
   
   def self.search(query)
-    all(:conditions => ["url LIKE ?", "%#{query}%"])
+    like = "%#{query}%"
+    all(:conditions => ["url LIKE ? OR tags LIKE ?", like, like])
   end
   
   private
