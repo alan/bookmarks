@@ -23,3 +23,15 @@ Scenario: Viewing all the main sites for bookmarks
 	When I follow "View all sites"
 	Then I should see "www.bbc.co.uk"
 	And I should see "news.bbc.co.uk"
+	
+Scenario: Viewing all bookmarks for a given site
+	Given the following bookmarks:
+		| url        									 |
+		| http://www.bbc.co.uk  			 |
+		| http://news.bbc.co.uk 			 |
+		| http://www.bbc.co.uk/iplayer |
+	And I am on the home page
+	When I follow "View all sites"
+	And I follow "www.bbc.co.uk"
+	Then I should see "http://www.bbc.co.uk"
+	And I should see "http://www.bbc.co.uk/iplayer"

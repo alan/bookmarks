@@ -1,0 +1,7 @@
+%h1= @site.name
+
+%p 
+	Sites:
+	%ul
+		-@site.bookmarks.each do |bookmark|
+			%li= link_to bookmark.url, site_bookmark_path(@site, bookmark)
