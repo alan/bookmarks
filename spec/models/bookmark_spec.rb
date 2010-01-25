@@ -40,14 +40,14 @@ describe Bookmark do
   
   describe "a bookmark should belong to a site" do
     it "should belong to a site and create it if necessary" do
-      bookmark = Bookmark.create!(:url => "http://www.bbc.co.uk")
+      bookmark = Bookmark.make(:url => "http://www.bbc.co.uk")
       Site.count.should == 1
       bookmark.site.should == Site.first
     end
     
     it "should reuse a site if it already exists" do
-      bookmark = Bookmark.create!(:url => "http://www.bbc.co.uk")
-      bookmark2 = Bookmark.create!(:url => "http://www.bbc.co.uk/iplayer")
+      bookmark = Bookmark.make(:url => "http://www.bbc.co.uk")
+      bookmark2 = Bookmark.make(:url => "http://www.bbc.co.uk/iplayer")
       Site.count.should == 1
       bookmark2.site.should == Site.first
     end

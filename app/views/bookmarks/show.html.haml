@@ -10,7 +10,12 @@
 		%li
 			Short url:
 			= @bookmark.short_url
-		%li Other
+		%li
+			Page title:
+			= @bookmark.page_title
+		%li
+			Page description:
+			= @bookmark.page_description
 
 %p#tags
 	#{@bookmark.tags}

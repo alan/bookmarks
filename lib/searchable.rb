@@ -2,10 +2,13 @@ class NoSearchableAttributes < StandardError; end;
 module Searchable
   
   def self.included(base)
-    raise NoSearchableAttributes unless base.column_names.any? do |column|
-      !column.ends_with?('_id') && !%w(id created_at updated_at).include?(column)
+    # Need to have this condition, otherwise first migration fails!
+    if base.table_exists?
+      raise NoSearchableAttributes unless base.column_names.any? do |column|
+        !column.ends_with?('_id') && !%w(id created_at updated_at).include?(column)
+      end
+      base.extend(ClassMethods)
     end
-    base.extend(ClassMethods)
   end
   
   module ClassMethods

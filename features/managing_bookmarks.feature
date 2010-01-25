@@ -13,6 +13,7 @@ Scenario: Adding a bookmark
 	And I follow "http://www.bbc.co.uk"
 	And I should see "news" within "#tags"
 	And I should see "bit.ly"
+	And I should see "BBC - Homepage"
 	
 Scenario: Viewing all the main sites for bookmarks
 	Given the following bookmarks:

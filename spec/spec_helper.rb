@@ -7,6 +7,9 @@ require 'spec/rails'
 
 require 'machinist/active_record'
 require 'sham'
+require 'webmock/rspec'
+
+include WebMock
 
 require File.expand_path(File.dirname(__FILE__) + "/blueprints")
 
@@ -37,6 +40,5 @@ Spec::Runner.configure do |config|
         \n \"statusCode\": \"OK\"\n}
     RESPONSE
     )
-    }
-
+  }
 end

@@ -5,12 +5,14 @@ gem "haml"
 gem "mysql"
 gem "rest-client", :require_as => 'restclient'
 gem 'yajl-ruby', :require_as => 'yajl'
+gem 'mechanize'
 
 only "test" do
   gem "rspec"
   gem "rspec-rails"
   gem "machinist"
   gem "faker"
+  gem "webmock"
 end
 
 only "cucumber" do

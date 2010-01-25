@@ -12,9 +12,11 @@
 ActiveRecord::Schema.define(:version => 20100124224000) do
 
   create_table "bookmarks", :force => true do |t|
-    t.text     "url",        :null => false
+    t.text     "url",              :null => false
     t.string   "short_url"
     t.text     "tags"
+    t.string   "page_title"
+    t.text     "page_description"
     t.integer  "site_id"
     t.datetime "created_at"
     t.datetime "updated_at"
