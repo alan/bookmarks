@@ -1,6 +1,6 @@
 require 'faker'
 
-Sham.url {Faker::Internet.domain_name}
+Sham.url {"http://" + Faker::Internet.domain_name}
 
 Bookmark.blueprint do
   url

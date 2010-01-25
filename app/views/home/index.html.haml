@@ -12,3 +12,5 @@
 		%ul
 			- for bookmark in @recent_bookmarks
 				%li= link_to bookmark.url, bookmark_path(bookmark)
+				
+%p= link_to "View all sites", sites_path

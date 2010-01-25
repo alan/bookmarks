@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.root :controller => "home"
   
+  map.resources :sites
   map.resources :bookmarks
   
   map.connect ':controller/:action/:id'

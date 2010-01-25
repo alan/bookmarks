@@ -12,3 +12,14 @@ Scenario: Adding a bookmark
 	Then I should see "Bookmark saved"
 	And I follow "http://www.bbc.co.uk"
 	And I should see "news" within "#tags"
+	
+Scenario: Viewing all the main sites for bookmarks
+	Given the following bookmarks:
+		| url        									 |
+		| http://www.bbc.co.uk  			 |
+		| http://news.bbc.co.uk 			 |
+		| http://www.bbc.co.uk/iplayer |
+	And I am on the home page
+	When I follow "View all sites"
+	Then I should see "www.bbc.co.uk"
+	And I should see "news.bbc.co.uk"
