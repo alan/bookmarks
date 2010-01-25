@@ -6,6 +6,8 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :bookmarks
+  map.resource :searches, :only => [:show]
+  
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

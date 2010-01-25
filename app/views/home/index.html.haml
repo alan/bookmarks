@@ -1,5 +1,11 @@
 %h1 Manage your Bookmarks
 
+#search
+	- form_tag searches_path, :method => :get do
+		= label_tag :query, "Search bookmarks"
+		= text_field_tag :query
+		= submit_tag "Search"
+	
 - form_for @bookmark do |f|
 	= f.label :url, "URL"
 	= f.text_field :url
@@ -9,8 +15,10 @@
 
 - if @recent_bookmarks	
 	#recently-added
-		%ul
-			- for bookmark in @recent_bookmarks
-				%li= link_to bookmark.url, bookmark_path(bookmark)
-				
+		%p
+			Recently added:
+			%ul
+				- @recent_bookmarks.each do |bookmark|
+					%li= link_to bookmark.url, bookmark_path(bookmark)
+			
 %p= link_to "View all sites", sites_path

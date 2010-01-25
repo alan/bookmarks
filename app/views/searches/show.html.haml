@@ -1,0 +1,13 @@
+%h1 Search results
+
+- if @results.any?
+	%h3= pluralize(@results.count, "result")
+	
+	%p
+		Results:
+		%ul
+			-@results.each do |result|
+				%li= link_to result.url, bookmark_path(result)
+			
+-else
+	%p No bookmarks found with your criteria

@@ -52,4 +52,19 @@ describe Bookmark do
       bookmark2.site.should == Site.first
     end
   end
+  
+  describe "#search" do
+    it "should search by url" do
+      bookmark = Bookmark.make(:url => "http://www.bbc.co.uk")
+      results = Bookmark.search("bbc")
+      results.size.should be(1)
+      results.should include(bookmark)
+      
+      bookmark2 = Bookmark.make(:url => "http://www.bbc.co.uk/iplayer")
+      results = Bookmark.search("bbc")
+      results.size.should be(2)
+      results.should include(bookmark)
+      results.should include(bookmark2)
+    end
+  end
 end

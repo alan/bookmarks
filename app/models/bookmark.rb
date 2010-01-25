@@ -22,6 +22,10 @@ class Bookmark < ActiveRecord::Base
     self.site = Site.find_or_create_by_name(host)
   end
   
+  def self.search(query)
+    all(:conditions => ["url LIKE ?", "%#{query}%"])
+  end
+  
   private
   
   def host
