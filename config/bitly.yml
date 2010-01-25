@@ -1,0 +1,9 @@
+development: &DEFAULT
+  version: 2.0.1
+  login: alankennedy100
+  apiKey: R_5e272f76feea07267115ba4f07d95f58
+
+test:
+  <<: *DEFAULT
+cucumber:
+  <<: *DEFAULT

@@ -4,8 +4,12 @@
 	%ul
 		%li
 			Added #{time_ago_in_words(@bookmark.created_at)} ago
-		%li Site
-		%li Page title
+		%li
+			Site page:
+			= link_to @bookmark.site.name, site_path(@bookmark.site)
+		%li
+			Short url:
+			= @bookmark.short_url
 		%li Other
 
 %p#tags

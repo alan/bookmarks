@@ -2,6 +2,7 @@ class CreateBookmarks < ActiveRecord::Migration
   def self.up
     create_table :bookmarks do |t|
       t.text :url, :null => false
+      t.string :short_url
       t.references :site
       t.timestamps
     end

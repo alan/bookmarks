@@ -20,7 +20,23 @@ Spec::Runner.configure do |config|
   config.use_instantiated_fixtures  = false
   config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
   
-  config.before(:all)    { Sham.reset(:before_all)  }
-  config.before(:each)   { Sham.reset(:before_each) }
+  config.before(:all) { Sham.reset(:before_all) }
+  
+  config.before(:each)   { 
+    Sham.reset(:before_each) 
+    RestClient.stub!(:post).and_return(
+    <<-RESPONSE
+      {\n \"errorCode\": 0, 
+        \n \"errorMessage\": \"\", 
+        \n \"results\": {\n \"http://www.bbc.co.uk\": {\n 
+                                        \"hash\": \"wAJUK\", 
+                                        \n \"shortCNAMEUrl\": \"http://bit.ly/5A206o\", 
+                                        \n \"shortKeywordUrl\": \"\", 
+                                        \n \"shortUrl\": \"http://bit.ly/5A206o\", 
+                                        \n \"userHash\": \"5A206o\"\n }\n }, 
+        \n \"statusCode\": \"OK\"\n}
+    RESPONSE
+    )
+    }
 
 end
