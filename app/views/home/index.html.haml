@@ -1,10 +1,10 @@
-%h1 Manage your Bookmarks
+#header.width2
+	%h1 Manage your Bookmarks
 
-#search
+#search.width3
 	- form_tag searches_path, :method => :get do
-		= label_tag :query, "Search bookmarks"
-		= text_field_tag :query, '', :id => 'suggestions-for'
-		= submit_tag "Search"
+		= text_field_tag :query, '', :id => 'suggestions-for', :class => 'width2'
+		= submit_tag "Search bookmarks"
 	#suggestions
 	
 - form_for @bookmark do |f|

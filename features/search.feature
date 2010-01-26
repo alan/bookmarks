@@ -12,21 +12,21 @@ Background:
 
 Scenario: Searching a bookmark by the url
 	Given I am on the home page
-	When I fill in "Search" with "http://www.bbc.co.uk"
-	And I press "Search"
+	When I fill in "query" with "http://www.bbc.co.uk"
+	And I press "Search bookmarks"
 	Then I should see "1 result"
 	And I should see "http://www.bbc.co.uk"
 	
 Scenario: Searching a bookmark by tags
 	Given I am on the home page
-	When I fill in "Search" with "news"
-	And I press "Search"
+	When I fill in "query" with "news"
+	And I press "Search bookmarks"
 	Then I should see "2 results"
 	And I should see "http://www.bbc.co.uk"
 	And I should see "http://www.itv.co.uk"
 	
 Scenario: No results
 	Given I am on the home page
-	When I fill in "Search" with "python"
-	And I press "Search"
+	When I fill in "query" with "python"
+	And I press "Search bookmarks"
 	Then I should see "No bookmarks found with your criteria"
