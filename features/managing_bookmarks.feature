@@ -11,7 +11,7 @@ Scenario: Adding a bookmark
 	And I press "Save bookmark"
 	Then I should see "Bookmark saved"
 	And I follow "http://www.bbc.co.uk"
-	And I should see "news" within "#tags"
+	And I should see "news" within ".tags"
 	And I should see "bit.ly"
 	And I should see "BBC - Homepage"
 	

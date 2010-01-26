@@ -1,10 +1,10 @@
 class SearchesController < ApplicationController
   def show
     @results = Bookmark.search(params[:query])
-  end
-  
-  def suggest
-    results = Bookmark.search(params[:query])
-    render :json => results.collect{|r| [r.url, r.id]}.to_json
+    
+    respond_to do |format|
+      format.html
+      format.json {render :json => @results.collect{|r| [r.url, r.id]}.to_json}
+    end
   end
 end

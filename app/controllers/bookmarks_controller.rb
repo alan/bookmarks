@@ -3,6 +3,8 @@ class BookmarksController < ApplicationController
     bookmark = Bookmark.new(params[:bookmark])
     if bookmark.save
       flash[:notice] = "Bookmark saved"
+    else
+      flash[:error] = "The bookmark is invalid. Did you forget http at the beginning?"
     end
     redirect_to :back
   end
