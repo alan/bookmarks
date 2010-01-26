@@ -22,7 +22,7 @@
 			%h3 Recently added:
 			%ul
 				- @recent_bookmarks.each do |bookmark|
-					%li= link_to bookmark.url, bookmark_path(bookmark)
+					%li= link_to h(bookmark.url), bookmark_path(bookmark)
 					
 
 			

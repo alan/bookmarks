@@ -7,7 +7,11 @@ class BookmarkObserver < ActiveRecord::Observer
   private
   
   def fetch_metadata(bookmark)
-    mechanize = WWW::Mechanize.new
+    # refactor
+    mechanize = WWW::Mechanize.new { |agent|
+        agent.user_agent_alias = 'Mac Safari'
+      }
+    
     page = nil
     unless bookmark.page_title
       page = mechanize.get(bookmark.url)

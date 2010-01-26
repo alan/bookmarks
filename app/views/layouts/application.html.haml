@@ -4,7 +4,8 @@
 	= javascript_include_tag 'jquery-1.4.1', 'application'
 %body
 	#page
-		#flash
+		#flash.width3
 			#notice.message{:style => "#{'display: none' unless flash[:notice]}" }= flash[:notice]
+			#error.message{:style => "#{'display: none' unless flash[:error]}" }= flash[:error]
 		#main-content
 			= yield

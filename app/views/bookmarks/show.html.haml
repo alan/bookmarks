@@ -3,20 +3,21 @@
 #info
 	%ul
 		%li
-			Added #{time_ago_in_words(@bookmark.created_at)} ago
+			%span.strong Added 
+			#{time_ago_in_words(@bookmark.created_at)} ago
 		%li
-			Site page:
-			= link_to @bookmark.site.name, site_path(@bookmark.site)
+			%span.strong Site page:
+			= link_to h(@bookmark.site.name), site_path(@bookmark.site)
 		%li
-			Short url:
-			= @bookmark.short_url
+			%span.strong Short url:
+			= h(@bookmark.short_url)
 		%li
-			Page title:
-			= @bookmark.page_title
+			%span.strong Page title:
+			= h(@bookmark.page_title)
 		%li
-			Page description:
-			= @bookmark.page_description
-
-%p#tags
-	#{@bookmark.tags}
+			%span.strong Page description:
+			= h(@bookmark.page_description)
+		%li
+			%span.strong Tags: 
+			= h(@bookmark.tags)
 		
