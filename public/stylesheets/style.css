@@ -36,7 +36,6 @@ a:active {
 }	
 
 #recently-added{
-	padding-top: 10px;
 	padding-left: 10px;
 	border-left: 1px solid;
 	padding-bottom: 45px;
@@ -68,7 +67,6 @@ input[type="text"]{
 
 #recently-added ul{
 	padding-left: 15px;
-	padding-bottom:;
 }
 
 ul {
@@ -81,7 +79,8 @@ ul {
 }
 
 #main-content h1,
-#main-content h3{
+#main-content h3,
+#main-content legend{
 	font-weight: 200; letter-spacing: 1px; text-shadow: 1px 1px 1px rgba(0,0,0,.4);
 }
  
@@ -102,7 +101,7 @@ ul {
 } 
 
 #main-content legend {
-	font-size: 24px; letter-spacing: 1px; text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+	font-size: 24px;
   margin-bottom: 0;
 	margin-top: 20px;
 }
