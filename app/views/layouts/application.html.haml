@@ -1,8 +1,9 @@
 %head
 	%title "Bookmarks"
+	= javascript_include_tag 'jquery-1.4.1', 'application'
 %body
-	#wrapper
+	#page
 		#flash
 			#notice.message{:style => "#{'display: none' unless flash[:notice]}" }= flash[:notice]
-		#content-wrapper
+		#main-content
 			= yield

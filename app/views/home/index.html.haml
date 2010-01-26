@@ -3,8 +3,9 @@
 #search
 	- form_tag searches_path, :method => :get do
 		= label_tag :query, "Search bookmarks"
-		= text_field_tag :query
+		= text_field_tag :query, '', :id => 'suggestions-for'
 		= submit_tag "Search"
+	#suggestions
 	
 - form_for @bookmark do |f|
 	= f.label :url, "URL"
