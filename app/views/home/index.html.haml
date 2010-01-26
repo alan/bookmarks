@@ -17,7 +17,7 @@
 			= f.text_field :tags
 			= f.submit "Save Bookmark"
 
-	- if @recent_bookmarks	
+	- if @recent_bookmarks.any?	
 		#recently-added.column.width1.no-gutter
 			%h3 Recently added:
 			%ul
