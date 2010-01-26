@@ -7,26 +7,25 @@ class BookmarkObserver < ActiveRecord::Observer
   private
   
   def fetch_metadata(bookmark)
-    # refactor
+    if bookmark.page_title.blank? && bookmark.page_description.blank?
+      page = fetch_page(bookmark)
+      bookmark.page_title = page.title
+      bookmark.page_description = fetch_description(page)
+      bookmark.save
+    end
+  end
+  
+  def fetch_description(page)
+    page.parser.search('//meta[@name="description"]').attribute("content").value
+  rescue
+    "No description found"
+  end
+  
+  def fetch_page(bookmark)
     mechanize = WWW::Mechanize.new { |agent|
         agent.user_agent_alias = 'Mac Safari'
       }
-    
-    page = nil
-    unless bookmark.page_title
-      page = mechanize.get(bookmark.url)
-      bookmark.page_title = page.title
-    end
-    unless bookmark.page_description
-      page ||= mechanize.get(bookmark.url)
-      begin
-        page_description = page.parser.search('//meta[@name="description"]').attribute("content").value
-      rescue => e
-        page_description = "No description found"
-      end
-      bookmark.page_description = page_description if page_description
-    end
-    bookmark.save
+    page = mechanize.get(bookmark.url)
   end
   
   def shorten_url(bookmark)
