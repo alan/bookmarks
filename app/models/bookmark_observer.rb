@@ -9,8 +9,13 @@ class BookmarkObserver < ActiveRecord::Observer
   def fetch_metadata(bookmark)
     if bookmark.page_title.blank? && bookmark.page_description.blank?
       page = fetch_page(bookmark)
-      bookmark.page_title = page.title
-      bookmark.page_description = fetch_description(page)
+      if page
+        bookmark.page_title = page.title
+        bookmark.page_description = fetch_description(page)
+      else
+        bookmark.page_title = "Title not found"
+        bookmark.page_description = "No description found"
+      end
       bookmark.save
     end
   end
@@ -25,7 +30,8 @@ class BookmarkObserver < ActiveRecord::Observer
     mechanize = WWW::Mechanize.new { |agent|
         agent.user_agent_alias = 'Mac Safari'
       }
-    page = mechanize.get(bookmark.url)
+    mechanize.get(bookmark.url)
+  rescue WWW::Mechanize::ResponseCodeError
   end
   
   def shorten_url(bookmark)

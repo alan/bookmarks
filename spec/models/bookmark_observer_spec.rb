@@ -62,5 +62,12 @@ describe BookmarkObserver do
       bookmark.page_title.should == "BBC Page"
       bookmark.page_description.should == "The BBC page"
     end
+    
+    it "should handle non http problems gracefully" do
+      stub_request(:get, "http://www.bbc.co.uk/").to_return(:status => 403)
+      bookmark = Bookmark.create!(:url => "http://www.bbc.co.uk")
+      bookmark.page_title.should == "Title not found"
+      bookmark.page_description.should == "No description found"
+    end
   end
 end
