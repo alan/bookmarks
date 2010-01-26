@@ -20,25 +20,61 @@ a:active {
 	margin: 0 auto 200px auto; 
 }	
 
-/*#main-content {
-  margin: 30px 0 0 0; padding-bottom: 0;
-}*/
+#recently-added{
+	padding-top: 5px;
+	padding-left: 10px;
+}
+
+#new_bookmark{
+	border-right: 1px solid;
+	padding-bottom: 10px;
+	
+}
+
+#recently-added ul{
+	padding-left: 15px;
+	padding-bottom:;
+}
+
+ul {
+	margin-top: 10px;
+}
 
 #suggestions {
-	margin: 0px;
-	padding:0px;
+	margin: 0;
+	padding: 0;
+}
+
+#main-content h1,
+#main-content h3{
+	font-weight: 200; letter-spacing: 1px; text-shadow: 1px 1px 1px rgba(0,0,0,.4);
 }
  
 #main-content h1 {
-  font-size: 34px; font-weight: 200; letter-spacing: 1px; text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+  font-size: 34px;
   margin-bottom: 0;
 	margin-top: 0;
+}
+
+#main-content h3 {
+	font-size: 24px; 
+  margin-bottom: 0;
+	margin-top: 10px;
+}
+
+#section fieldset{
+	margin-right: 15px;
+} 
+
+#main-content legend {
+	font-size: 24px; letter-spacing: 1px; text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+  margin-bottom: 0;
+	margin-top: 20px;
 }
 
 #search {
 	border: black 2px solid;
 	padding: 10px;
-	vertical-align: baseline;
 }
 
 #search input{
@@ -50,4 +86,12 @@ a:active {
 #search form{
 	padding-top: 10px;
 	margin-bottom:0px;
+}
+
+#section{
+	margin-top: 20px;
+}
+
+.clear {
+	clear: both;
 }

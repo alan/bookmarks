@@ -6,20 +6,24 @@
 		= text_field_tag :query, '', :id => 'suggestions-for', :class => 'width2'
 		= submit_tag "Search bookmarks"
 	#suggestions
-	
-- form_for @bookmark do |f|
-	= f.label :url, "URL"
-	= f.text_field :url
-	= f.label :tags
-	= f.text_field :tags
-	= f.submit "Save Bookmark"
 
-- if @recent_bookmarks	
-	#recently-added
-		%p
-			Recently added:
+#section.width4
+	- form_for @bookmark, :html => {:class => 'column width2 first'}do |f|
+		%fieldset
+			%legend Add a bookmark
+			= f.label :url, "URL"
+			= f.text_field :url
+			= f.label :tags
+			= f.text_field :tags
+			= f.submit "Save Bookmark"
+
+	- if @recent_bookmarks	
+		#recently-added.column.width1.no-gutter
+			%h3 Recently added:
 			%ul
 				- @recent_bookmarks.each do |bookmark|
 					%li= link_to bookmark.url, bookmark_path(bookmark)
+					
+
 			
-%p= link_to "View all sites", sites_path
+%p.clear= link_to "View all sites", sites_path
