@@ -3,3 +3,4 @@
 - Try upgrading to Rails 3
 - Try upgrading bundler from 0.8.1 to 0.9.x
 - Replace the searching with a Redis library instead of doing it mysql
+- Do shortening and scraping asynchronously
